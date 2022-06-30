@@ -9,8 +9,12 @@ window.onpageshow = onPageLoad();
 
 
 function onPageLoad() {
+    //adding an event to the search input
     var input = document.getElementById('search');
-    input.addEventListener("focusout", search)
+    input.addEventListener("focusout", search);
+    // adding an event to the view button
+    var btn = document.getElementById("view");
+    btn.addEventListener("click", viewLocations);
     sortByDate();
 
 }
@@ -88,4 +92,7 @@ function sortByDate() {
     });
     console.log(reportsToSort);
     uploadData(reportsToSort);
+}
+function viewLocations() {
+    window.location.href = "./viewPath.html"
 }

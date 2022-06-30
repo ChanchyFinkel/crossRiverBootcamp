@@ -8,7 +8,7 @@ import { Patient } from './patient.js';
 var allPatients = [];
 window.onpageshow = createTableReport();
 async function createTableReport() {
-  //  await readDb();
+    //  await readDb();
     //create a table for each patient with his reports - according his id
     var id = document.getElementById('id');
     //add event to the id input that clean the old data
@@ -24,11 +24,15 @@ async function createTableReport() {
                 patient.reports.forEach(report => {
                     uploadData(report);
                 })
-            //adding event to the add button
-            var btn = document.getElementById("btn");
+            //adding an event to the add button
+            var btn = document.getElementById("add");
             btn.addEventListener("click", addReport);
+
         }
     })
+    // adding an event to the view button
+    var btn = document.getElementById("view");
+    btn.addEventListener("click", viewLocations);
 }
 // function readDb() {
 
@@ -123,7 +127,7 @@ function createReport() {
             //a old patient entered
             //adding the report to the reports list
             patient.reports.push(newReport);
-           // writeToDB(patient, newReport);
+            // writeToDB(patient, newReport);
             return patient;
         }
         else {
@@ -132,7 +136,7 @@ function createReport() {
             //adding the report to the reports list
             var newPatient = new Patient(id, newReport);
             allPatients.push(newPatient);
-           // writeToDB(newPatient);
+            // writeToDB(newPatient);
             return newPatient;
         }
     }
@@ -199,6 +203,9 @@ function deleteReport(report) {
         allPatients[patientIndex].reports.splice(reportIndex, 1);
         console.log(allPatients);
     }
+}
+function viewLocations() {
+    window.location.href = "./epidemiologyReport.html"
 }
 
 
